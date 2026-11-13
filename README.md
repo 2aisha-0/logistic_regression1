@@ -1,46 +1,41 @@
-# Logistic Regression with different optimizers
+# Logistic Regression with 5 optimizers
 
-This is my second ML assignment :)
-I used logistic regression (binary classification) to predict a person's fitness level, and I wrote every optimizer by hand with numpy so I can see how each one works.
+ML assignment 2
+
+i used logistic regression (binary classification) to predict if a person has good fitness or not, and i wrote the 5 optimizers myself with numpy
 
 ## Dataset
-Body Performance Data from Kaggle (`bodyPerformance.csv`), 13,393 people.
+Body Performance Data from kaggle (13393 rows)
 
-- Features: age, gender, height_cm, weight_kg, body fat_%, diastolic, systolic, gripForce, sit and bend forward_cm, sit-ups counts, broad jump_cm
-- Target: `class` (A, B, C, D) turned into binary:
-  - A or B → **1** (high fitness)
-  - C or D → **0** (lower fitness)
+the class column has A, B, C, D so i changed it to binary:
+- A and B = 1 (good fitness)
+- C and D = 0
 
 ## Notebooks
-| Notebook | Optimizer |
-|---|---|
-| 1_Gradient_Descent.ipynb | Gradient Descent (batch) |
-| 2_Stochastic_Gradient_Descent.ipynb | Stochastic Gradient Descent |
-| 3_Mini_Batch_Gradient_Descent.ipynb | Mini-Batch Gradient Descent |
-| 4_RMSprop.ipynb | RMSprop |
-| 5_Adam.ipynb | Adam |
+- 1_Gradient_Descent.ipynb
+- 2_Stochastic_Gradient_Descent.ipynb
+- 3_Mini_Batch_Gradient_Descent.ipynb
+- 4_RMSprop.ipynb
+- 5_Adam.ipynb
 
-## Steps (same in all notebooks)
+## Steps
 1. load the data
-2. change gender to 0 / 1 and make the binary target
-3. split 80% train, 20% test, then scale
-4. write sigmoid, binary cross-entropy loss and the gradient
+2. change gender to 0/1 and make the target binary
+3. train test split (80/20) and scaling
+4. sigmoid, loss (binary cross entropy) and gradient functions
 5. train with the optimizer
-6. plot the loss, show the confusion matrix and compute Accuracy, Precision, Recall, F1 and Loss on the test set
-7. check our hand-written metrics against scikit-learn
+6. loss curve, accuracy, precision, recall, f1, loss and confusion matrix
 
 ## Results (test set)
-| Optimizer | Loss | Accuracy | Precision | Recall | F1 |
+| Optimizer | Accuracy | Precision | Recall | F1 | Loss |
 |---|---|---|---|---|---|
-| GD | 0.391 | 0.824 | 0.811 | 0.845 | 0.828 |
-| SGD | 0.396 | 0.823 | 0.821 | 0.825 | 0.823 |
-| Mini-Batch GD | 0.392 | 0.823 | 0.811 | 0.843 | 0.827 |
-| RMSprop | 0.392 | 0.821 | 0.813 | 0.834 | 0.823 |
-| Adam | 0.392 | 0.823 | 0.808 | 0.846 | 0.827 |
+| GD | 0.822 | 0.819 | 0.831 | 0.825 | 0.392 |
+| SGD | 0.826 | 0.815 | 0.847 | 0.831 | 0.392 |
+| Mini Batch | 0.823 | 0.820 | 0.830 | 0.825 | 0.392 |
+| RMSprop | 0.825 | 0.821 | 0.835 | 0.828 | 0.392 |
+| Adam | 0.821 | 0.819 | 0.827 | 0.823 | 0.393 |
 
-All five reached almost the same result. The logistic regression loss is convex (it has only one minimum), so every optimizer ends up in the same place. The difference is in how they get there: GD needed 300 epochs, SGD is the noisiest, and Mini-Batch, RMSprop and Adam got there in 50 epochs.
+all of them got around 82% accuracy. i think its because the logistic regression loss is convex so they all reach the same minimum, the difference is just how fast they get there (GD needed 300 epochs, the others 20-50)
 
-## Run it
-Open any notebook on Kaggle, add the Body Performance Data dataset as input, then Run All.
-
-Libraries: numpy, pandas, matplotlib, scikit-learn
+## How to run
+open the notebook on kaggle, add the Body Performance Data dataset and run all
