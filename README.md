@@ -2,7 +2,7 @@
 
 ML assignment 2
 
-i used logistic regression (binary classification) to predict if a person has good fitness or not, and i wrote the 5 optimizers myself with numpy
+i used logistic regression (binary classification) to predict if a person has good fitness or no
 
 ## Dataset
 Body Performance Data from kaggle (13393 rows)
